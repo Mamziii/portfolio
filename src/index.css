@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary - قرمز عمیق و شیک */
+  --color-primary: #9f1239;
+  --color-primary-dark: #881337;
+
+  /* Accent - قرمز زنده‌تر */
+  --color-accent: #e11d48;
+  --color-accent-light: #f43f5e;
+
+  /* Backgrounds */
+  --color-background-light: #fafafa;
+  --color-background-dark: #0f0f0f;
+
+  /* Text */
+  --color-text-main: #1c1917;
+  --color-text-secondary: #78716c;
+  --color-text-main-dark: #f8fafc;
+
+  /* Cards */
+  --color-card: #ffffff;
+  --color-card-dark: #1a1a1a;
+
+  /* Borders */
+  --color-border: #e7e5e4;
+  --color-border-dark: #2a2a2a;
+
+  /* Status */
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-discount: #e11d48;
+
+  /* Font */
+  --font-sans: "Vazirmatn", sans-serif;
+}
