@@ -19,8 +19,8 @@ const projects: Project[] = [
     description:
       'توضیح کامل‌تر درباره این پروژه حرفه‌ای. اینجا بنویس چه مشکلی حل کردی، معماری چطور بود و از چه تکنولوژی‌هایی استفاده کردی.',
     techs: ['React', 'TypeScript', 'Tailwind', 'React Query'],
-    github: 'https://github.com/Mamziii',
-    demo: '#',
+    github: 'https://github.com/Mamziii/mens_shop',
+    demo: 'https://mens-shop-zeta.vercel.app/',
     type: 'professional',
   },
   {
@@ -29,8 +29,8 @@ const projects: Project[] = [
     description:
       'توضیح کامل‌تر درباره پروژه حرفه‌ای دوم. می‌تونی در مورد چالش‌ها، مقیاس‌پذیری و ویژگی‌های مهم بنویسی.',
     techs: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/Mamziii',
-    demo: '#',
+    github: 'https://github.com/Mamziii/admin-pannel',
+    demo: 'https://admin-pannel-rose.vercel.app/',
     type: 'professional',
   },
 
