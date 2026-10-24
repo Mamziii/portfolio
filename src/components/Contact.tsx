@@ -1,19 +1,31 @@
-import { useState, FormEvent } from 'react'
+import { useForm } from 'react-hook-form'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
+type FormValues = {
+  name: string
+  email: string
+  message: string
+}
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
   })
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+  const onSubmit = (data: FormValues) => {
     // فعلاً فقط لاگ می‌کنیم. بعداً می‌تونیم به ایمیل یا سرویس متصل کنیم
-    console.log('Form submitted:', formData)
+    console.log('Form submitted:', data)
     alert('پیام شما با موفقیت ارسال شد!')
-    setFormData({ name: '', email: '', message: '' })
+    reset()
   }
 
   return (
@@ -89,7 +101,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
             <div>
               <label htmlFor="name" className="block text-sm text-muted mb-1.5">
                 نام
@@ -97,12 +109,16 @@ export default function Contact() {
               <input
                 id="name"
                 type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                {...register('name', {
+                  required: 'نام الزامی است',
+                  minLength: { value: 2, message: 'نام باید حداقل ۲ کاراکتر باشد' },
+                })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors"
                 placeholder="نام شما"
               />
+              {errors.name && (
+                <p className="mt-1.5 text-sm text-red-500">{errors.name.message}</p>
+              )}
             </div>
 
             <div>
@@ -112,12 +128,19 @@ export default function Contact() {
               <input
                 id="email"
                 type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                {...register('email', {
+                  required: 'ایمیل الزامی است',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'ایمیل معتبر وارد کنید',
+                  },
+                })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors"
                 placeholder="email@example.com"
               />
+              {errors.email && (
+                <p className="mt-1.5 text-sm text-red-500">{errors.email.message}</p>
+              )}
             </div>
 
             <div>
@@ -126,20 +149,25 @@ export default function Contact() {
               </label>
               <textarea
                 id="message"
-                required
                 rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                {...register('message', {
+                  required: 'پیام الزامی است',
+                  minLength: { value: 10, message: 'پیام باید حداقل ۱۰ کاراکتر باشد' },
+                })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors resize-none"
                 placeholder="پیامت رو بنویس..."
               />
+              {errors.message && (
+                <p className="mt-1.5 text-sm text-red-500">{errors.message.message}</p>
+              )}
             </div>
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-full bg-accent hover:bg-accent-light text-white font-medium transition-colors shadow-lg shadow-accent/20"
+              disabled={isSubmitting}
+              className="w-full py-3.5 rounded-full bg-accent hover:bg-accent-light text-white font-medium transition-colors shadow-lg shadow-accent/20 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              ارسال پیام
+              {isSubmitting ? 'در حال ارسال...' : 'ارسال پیام'}
             </button>
           </form>
         </div>

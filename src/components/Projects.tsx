@@ -1,32 +1,75 @@
+import { Link } from 'react-router-dom'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
-const projects = [
+type Project = {
+  id: number
+  title: string
+  description: string
+  techs: string[]
+  github: string
+  demo: string
+  type: 'professional' | 'simple'
+}
+
+const projects: Project[] = [
+  // ========== پروژه‌های حرفه‌ای (اول) ==========
   {
     id: 1,
-    title: 'پروژه اول',
+    title: 'پروژه حرفه‌ای ۱',
     description:
-      'توضیح کوتاه درباره این پروژه. اینجا بنویس چه کاری انجام دادی و از چه تکنولوژی‌هایی استفاده کردی.',
-    techs: ['React', 'TypeScript', 'Tailwind'],
+      'توضیح کامل‌تر درباره این پروژه حرفه‌ای. اینجا بنویس چه مشکلی حل کردی، معماری چطور بود و از چه تکنولوژی‌هایی استفاده کردی.',
+    techs: ['React', 'TypeScript', 'Tailwind', 'React Query'],
     github: 'https://github.com/Mamziii',
     demo: '#',
+    type: 'professional',
   },
   {
     id: 2,
-    title: 'پروژه دوم',
+    title: 'پروژه حرفه‌ای ۲',
     description:
-      'توضیح کوتاه درباره پروژه دوم. می‌تونی در مورد ویژگی‌های مهم و چالش‌هایی که حل کردی بنویسی.',
-    techs: ['React', 'React Query', 'Axios'],
+      'توضیح کامل‌تر درباره پروژه حرفه‌ای دوم. می‌تونی در مورد چالش‌ها، مقیاس‌پذیری و ویژگی‌های مهم بنویسی.',
+    techs: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
     github: 'https://github.com/Mamziii',
     demo: '#',
+    type: 'professional',
   },
+
+  // ========== پروژه‌های ساده‌تر (بعد) ==========
   {
     id: 3,
-    title: 'پروژه سوم',
-    description:
-      'توضیح کوتاه درباره پروژه سوم. این بخش رو بعداً با پروژه‌های واقعی‌ات جایگزین کن.',
-    techs: ['TypeScript', 'React Hook Form', 'Tailwind'],
+    title: 'پروژه ساده ۱',
+    description: 'توضیح کوتاه درباره این پروژه ساده.',
+    techs: ['React', 'Tailwind'],
     github: 'https://github.com/Mamziii',
     demo: '#',
+    type: 'simple',
+  },
+  {
+    id: 4,
+    title: 'پروژه ساده ۲',
+    description: 'توضیح کوتاه درباره پروژه ساده دوم.',
+    techs: ['React', 'TypeScript'],
+    github: 'https://github.com/Mamziii',
+    demo: '#',
+    type: 'simple',
+  },
+  {
+    id: 5,
+    title: 'پروژه ساده ۳',
+    description: 'توضیح کوتاه درباره پروژه ساده سوم.',
+    techs: ['React', 'React Hook Form'],
+    github: 'https://github.com/Mamziii',
+    demo: '#',
+    type: 'simple',
+  },
+  {
+    id: 6,
+    title: 'پروژه ساده ۴',
+    description: 'توضیح کوتاه درباره پروژه ساده چهارم.',
+    techs: ['TypeScript', 'Tailwind'],
+    github: 'https://github.com/Mamziii',
+    demo: '#',
+    type: 'simple',
   },
 ]
 
@@ -48,13 +91,25 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <article
+            <Link
               key={project.id}
-              className="group bg-background border border-border rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg"
+              to={`/projects/${project.id}`}
+              className="group bg-background border border-border rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg block"
             >
               {/* Image Placeholder */}
-              <div className="aspect-video bg-card border-b border-border flex items-center justify-center">
+              <div className="aspect-video bg-card border-b border-border flex items-center justify-center relative">
                 <span className="text-muted text-sm">تصویر پروژه</span>
+
+                {/* Badge نوع پروژه */}
+                <span
+                  className={`absolute top-3 right-3 px-2.5 py-1 text-xs rounded-full font-medium ${
+                    project.type === 'professional'
+                      ? 'bg-accent/15 text-accent border border-accent/30'
+                      : 'bg-muted/20 text-muted border border-border'
+                  }`}
+                >
+                  {project.type === 'professional' ? 'حرفه‌ای' : 'ساده'}
+                </span>
               </div>
 
               {/* Content */}
@@ -81,28 +136,34 @@ export default function Projects() {
 
                 {/* Links */}
                 <div className="flex items-center gap-5">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      window.open(project.github, '_blank')
+                    }}
+                    className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors cursor-pointer"
                   >
                     <FaGithub className="text-base" />
                     GitHub
-                  </a>
+                  </span>
 
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      if (project.demo !== '#') {
+                        window.open(project.demo, '_blank')
+                      }
+                    }}
+                    className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors cursor-pointer"
                   >
                     <FaExternalLinkAlt className="text-sm" />
                     Live Demo
-                  </a>
+                  </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
