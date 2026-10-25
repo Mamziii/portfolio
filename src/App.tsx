@@ -1,25 +1,20 @@
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
+import routes from "./routes";
+import { useRoutes } from "react-router-dom";
+
+// components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
+  const router = useRoutes(routes);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
+      {router}
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

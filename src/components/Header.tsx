@@ -1,52 +1,66 @@
 import { useState, useEffect } from 'react'
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi'
 import { useTheme } from '../context/ThemeContext'
+import { Link, useLocation } from 'react-router-dom'
 
 const navLinks = [
-  { name: 'خانه', href: '#home' },
-  { name: 'درباره من', href: '#about' },
-  { name: 'مهارت‌ها', href: '#skills' },
-  { name: 'پروژه‌ها', href: '#projects' },
-  { name: 'تماس', href: '#contact' },
+  { name: 'خانه', to: '/#home' },
+  { name: 'درباره من', to: '/#about' },
+  { name: 'مهارت‌ها', to: '/#skills' },
+  { name: 'پروژه‌ها', to: '/#projects' },
 ]
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    const handleScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // وقتی از صفحه دیگه میایم و hash داریم، اسکرول کن به سکشن
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      // کمی تأخیر بده تا صفحه رندر بشه
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [location])
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/90 backdrop-blur-md border-b border-border shadow-sm'
+          ? 'bg-background/90 backdrop-blur-md border-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-20">
-        
-        {/* Logo - در RTL سمت راست قرار می‌گیره */}
-        <a href="#home" className="text-2xl font-bold tracking-tight">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-bold tracking-tight">
           <span className="text-accent">محمدرضا</span>
           <span className="text-foreground">کاویانی</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.to}
               className="text-sm font-medium text-muted hover:text-accent transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
 
           {/* Theme Toggle */}
@@ -62,12 +76,12 @@ export default function Header() {
             )}
           </button>
 
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="px-5 py-2.5 rounded-full bg-accent hover:bg-accent-light text-white text-sm font-medium transition-colors"
           >
             تماس با من
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Buttons */}
@@ -99,15 +113,22 @@ export default function Header() {
         <div className="md:hidden bg-card border-t border-border">
           <nav className="flex flex-col p-4 gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 onClick={() => setIsOpen(false)}
                 className="py-3 px-2 text-muted hover:text-accent transition-colors rounded-lg"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
+            <Link
+              to="/#contact"
+              onClick={() => setIsOpen(false)}
+              className="py-3 px-2 text-accent font-medium"
+            >
+              تماس با من
+            </Link>
           </nav>
         </div>
       )}
