@@ -1,11 +1,11 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaTelegram, FaInstagram } from 'react-icons/fa'
 import { HiArrowDown } from 'react-icons/hi'
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6"
+      className="min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 relative"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="max-w-3xl">
@@ -60,6 +60,7 @@ export default function Hero() {
             >
               <FaGithub />
             </a>
+
             <a
               href="https://linkedin.com/in/yourusername"
               target="_blank"
@@ -68,6 +69,26 @@ export default function Hero() {
               aria-label="LinkedIn"
             >
               <FaLinkedin />
+            </a>
+
+            <a
+              href="https://t.me/mhmmdrezakaviyani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent transition-colors text-2xl"
+              aria-label="Telegram"
+            >
+              <FaTelegram />
+            </a>
+
+            <a
+              href="https://instagram.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent transition-colors text-2xl"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
             </a>
           </div>
         </div>
