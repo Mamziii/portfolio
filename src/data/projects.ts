@@ -1,3 +1,8 @@
+export type ProjectImage = {
+  src: string;
+  title: string;
+};
+
 export type Project = {
   id: number;
   title: string;
@@ -8,21 +13,45 @@ export type Project = {
   demo: string;
   type: "professional" | "simple";
   features?: string[];
+  coverImage?: string;
+  images?: ProjectImage[]; // ← تغییر کرد
 };
 
 export const projects: Project[] = [
   // ========== پروژه‌های حرفه‌ای ==========
   {
     id: 1,
-    title: "پروژه حرفه‌ای ۱",
-    description: "توضیح کوتاه درباره این پروژه حرفه‌ای.",
+    title: "فروشگاه پوشاک مردانه (MenShop)",
+    description:
+      "یک فروشگاه آنلاین کامل پوشاک مردانه با صفحات اصلی، جزئیات محصول، سبد خرید، ورود و ثبت‌نام.",
     longDescription:
-      "اینجا توضیح کامل‌تری درباره پروژه بنویس. مثلاً چه مشکلی حل کردی، معماری چطور بود، چه چالش‌هایی داشتی و چطور حلشون کردی. می‌تونی چند پاراگراف بنویسی.",
-    techs: ["React", "TypeScript", "Tailwind", "React Query"],
-    github: "https://github.com/Mamziii/mens_shop",
+      "این پروژه یک فروشگاه اینترنتی کامل برای پوشاک مردانه است که شامل صفحه اصلی، جزئیات محصول، سبد خرید، صفحه سفارش، ورود و ثبت‌نام، جستجو و سایدبار موبایل می‌شود. رابط کاربری کاملاً ریسپانسیو طراحی شده و تجربه کاربری در دسکتاپ و موبایل در نظر گرفته شده است.",
+    techs: ["React", "TypeScript", "Tailwind", "React Router"],
+    github: "https://github.com/Mamziii",
     demo: "https://mens-shop-zeta.vercel.app/",
     type: "professional",
-    features: ["ویژگی اول پروژه", "ویژگی دوم پروژه", "ویژگی سوم پروژه"],
+    features: [
+      "صفحه اصلی با نمایش محصولات",
+      "صفحه جزئیات محصول",
+      "سبد خرید و صفحه سفارش",
+      "ورود و ثبت‌نام کاربر",
+      "جستجوی محصول",
+      "طراحی ریسپانسیو (موبایل و دسکتاپ)",
+    ],
+    coverImage: "/menshop/homepage.jpeg",
+    images: [
+      { src: "/menshop/homepage.jpeg", title: "صفحه اصلی (دسکتاپ)" },
+      { src: "/menshop/productdetaispage.jpeg", title: "صفحه جزئیات محصول" },
+      { src: "/menshop/cartpage.jpeg", title: "سبد خرید (دسکتاپ)" },
+      { src: "/menshop/orderpage.jpeg", title: "صفحه سفارش" },
+      { src: "/menshop/loginpage.jpeg", title: "صفحه ورود" },
+      { src: "/menshop/registerpage.jpeg", title: "صفحه ثبت‌نام" },
+      { src: "/menshop/infopage.jpeg", title: "صفحه اطلاعات" },
+      { src: "/menshop/searchbox.jpeg", title: "جعبه جستجو" },
+      { src: "/menshop/cartpagemobile.jpeg", title: "سبد خرید (موبایل)" },
+      { src: "/menshop/homepagemobile.jpeg", title: "صفحه اصلی (موبایل)" },
+      { src: "/menshop/sidebarmobile.jpeg", title: "سایدبار موبایل" },
+    ],
   },
   {
     id: 2,
@@ -56,7 +85,7 @@ export const projects: Project[] = [
     github: "https://github.com/Mamziii/Taskly",
     demo: "https://taskly-nu-two.vercel.app/",
     type: "simple",
-  }
+  },
 ];
 
 export function getProjectById(id: number): Project | undefined {

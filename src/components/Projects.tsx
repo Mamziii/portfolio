@@ -56,8 +56,21 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       to={`/projects/${project.id}`}
       className="group bg-background border border-border rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg block"
     >
-      <div className="aspect-video bg-card border-b border-border flex items-center justify-center relative">
-        <span className="text-muted text-sm">تصویر پروژه</span>
+      {/* ========== این قسمت عکس ========== */}
+      <div className="aspect-video bg-card border-b border-border overflow-hidden relative">
+        {project.coverImage ? (
+          <img
+            src={project.coverImage}
+            alt={project.title}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-muted text-sm">تصویر پروژه</span>
+          </div>
+        )}
+
+        {/* Badge */}
         <span
           className={`absolute top-3 right-3 px-2.5 py-1 text-xs rounded-full font-medium ${
             project.type === 'professional'
@@ -68,11 +81,13 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           {project.type === 'professional' ? 'حرفه‌ای' : 'ساده'}
         </span>
       </div>
+      {/* ========== پایان قسمت عکس ========== */}
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
+
         <p className="text-muted text-sm leading-relaxed mb-5 line-clamp-3">
           {project.description}
         </p>
@@ -100,6 +115,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             <FaGithub className="text-base" />
             GitHub
           </span>
+
           <span
             onClick={(e) => {
               e.preventDefault()
