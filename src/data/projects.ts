@@ -62,7 +62,7 @@ export const projects: Project[] = [
       "این پروژه یک داشبورد مدیریتی کامل برای فروشگاه اینترنتی است. شامل مدیریت محصولات، جزئیات سفارش، لیست کاربران، آمار فروش و طراحی کاملاً ریسپانسیو برای موبایل و دسکتاپ می‌شود.",
     techs: ["React", "TypeScript", "Tailwind", "React Router", "Chart"],
     github: "https://github.com/Mamziii",
-    demo: "#",
+    demo: "https://admin-pannel-rose.vercel.app/",
     type: "professional",
     features: [
       "داشبورد و آمار فروش",
