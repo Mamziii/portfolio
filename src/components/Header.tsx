@@ -66,7 +66,7 @@ export default function Header() {
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           scrolled
             ? "bg-background/80 backdrop-blur-xl border-border/60 shadow-[0_4px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.25)]"
-            : "bg-transparent"
+            : "bg-transparent shadow-[0_4px_30px_rgba(0,0,0,0.04)]"
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[72px]">
