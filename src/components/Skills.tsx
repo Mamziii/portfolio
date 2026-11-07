@@ -13,7 +13,7 @@ const skills = [
   },
   {
     category: 'Other',
-    items: ['Git', 'REST API', 'Framer Motion'],
+    items: ['Git', 'REST API',],
   },
 ]
 

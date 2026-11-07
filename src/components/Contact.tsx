@@ -1,11 +1,22 @@
-import { useForm } from "react-hook-form";
-import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from "react-icons/fa";
+import { useForm } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaTelegram,
+  FaInstagram,
+} from 'react-icons/fa'
 
 type FormValues = {
-  name: string;
-  email: string;
-  message: string;
-};
+  name: string
+  email: string
+  message: string
+}
+
+const SERVICE_ID = 'service_adch2kc'
+const TEMPLATE_ID = 'template_zi6whgf'
+const PUBLIC_KEY = 'bmQaANkvPPoGj9RK6'
 
 export default function Contact() {
   const {
@@ -15,18 +26,32 @@ export default function Contact() {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     defaultValues: {
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: '',
     },
-  });
+  })
 
-  const onSubmit = (data: FormValues) => {
-    // فعلاً فقط لاگ می‌کنیم. بعداً می‌تونیم به ایمیل یا سرویس متصل کنیم
-    console.log("Form submitted:", data);
-    alert("پیام شما با موفقیت ارسال شد!");
-    reset();
-  };
+  const onSubmit = async (data: FormValues) => {
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        PUBLIC_KEY
+      )
+
+      alert('پیام شما با موفقیت ارسال شد!')
+      reset()
+    } catch (error) {
+      console.error('EmailJS Error:', error)
+      alert('ارسال پیام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.')
+    }
+  }
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6">
@@ -57,7 +82,7 @@ export default function Contact() {
 
             <div className="space-y-4">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:kiyarash17kaviyani@gmail.com"
                 className="flex items-center gap-4 text-muted hover:text-accent transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center">
@@ -65,7 +90,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted">ایمیل</p>
-                  <p className="text-foreground">your.email@example.com</p>
+                  <p className="text-foreground">kiyarash17kaviyani@gmail.com</p>
                 </div>
               </a>
 
@@ -95,9 +120,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted">لینکدین</p>
-                  <p className="text-foreground">
-                    linkedin.com/in/yourusername
-                  </p>
+                  <p className="text-foreground">linkedin.com/in/yourusername</p>
                 </div>
               </a>
 
@@ -113,6 +136,21 @@ export default function Contact() {
                 <div>
                   <p className="text-sm text-muted">تلگرام</p>
                   <p className="text-foreground">t.me/mhmmdrezakaviyani</p>
+                </div>
+              </a>
+
+              <a
+                href="https://instagram.com/mhmmreza.kaviyani"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-muted hover:text-accent transition-colors"
+              >
+                <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center">
+                  <FaInstagram className="text-accent text-lg" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted">اینستاگرام</p>
+                  <p className="text-foreground">mhmmreza.kaviyani</p>
                 </div>
               </a>
             </div>
@@ -131,11 +169,11 @@ export default function Contact() {
               <input
                 id="name"
                 type="text"
-                {...register("name", {
-                  required: "نام الزامی است",
+                {...register('name', {
+                  required: 'نام الزامی است',
                   minLength: {
                     value: 2,
-                    message: "نام باید حداقل ۲ کاراکتر باشد",
+                    message: 'نام باید حداقل ۲ کاراکتر باشد',
                   },
                 })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors"
@@ -149,20 +187,17 @@ export default function Contact() {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm text-muted mb-1.5"
-              >
+              <label htmlFor="email" className="block text-sm text-muted mb-1.5">
                 ایمیل
               </label>
               <input
                 id="email"
                 type="email"
-                {...register("email", {
-                  required: "ایمیل الزامی است",
+                {...register('email', {
+                  required: 'ایمیل الزامی است',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "ایمیل معتبر وارد کنید",
+                    message: 'ایمیل معتبر وارد کنید',
                   },
                 })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors"
@@ -185,11 +220,11 @@ export default function Contact() {
               <textarea
                 id="message"
                 rows={5}
-                {...register("message", {
-                  required: "پیام الزامی است",
+                {...register('message', {
+                  required: 'پیام الزامی است',
                   minLength: {
                     value: 10,
-                    message: "پیام باید حداقل ۱۰ کاراکتر باشد",
+                    message: 'پیام باید حداقل ۱۰ کاراکتر باشد',
                   },
                 })}
                 className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors resize-none"
@@ -207,11 +242,11 @@ export default function Contact() {
               disabled={isSubmitting}
               className="w-full py-3.5 rounded-full bg-accent hover:bg-accent-light text-white font-medium transition-colors shadow-lg shadow-accent/20 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "در حال ارسال..." : "ارسال پیام"}
+              {isSubmitting ? 'در حال ارسال...' : 'ارسال پیام'}
             </button>
           </form>
         </div>
       </div>
     </section>
-  );
+  )
 }

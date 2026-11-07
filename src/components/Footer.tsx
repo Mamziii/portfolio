@@ -37,7 +37,7 @@ export default function Footer() {
               <FaLinkedin />
             </a>
             <a
-              href="https://instagram.com/yourusername"
+              href="https://instagram.com/mhmmreza.kaviyani"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-accent transition-colors text-xl"
@@ -55,7 +55,7 @@ export default function Footer() {
               <FaTelegram />
             </a>
             <a
-              href="kiyarash17kaviyani@gmail.com"
+              href="mailto:kiyarash17kaviyani@gmail.com"
               className="text-muted hover:text-accent transition-colors text-xl"
               aria-label="Email"
             >

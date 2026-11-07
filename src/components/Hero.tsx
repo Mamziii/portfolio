@@ -67,7 +67,7 @@ export default function Hero() {
                 <FaTelegram />
               </a>
               <a
-                href="https://instagram.com/yourusername"
+               href="https://instagram.com/mhmmreza.kaviyani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent transition-colors text-2xl"
