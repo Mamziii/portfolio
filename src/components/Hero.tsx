@@ -35,14 +35,7 @@ export default function Hero() {
                 مشاهده پروژه‌ها
               </a>
 
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-accent text-accent hover:bg-accent hover:text-white font-medium transition-colors"
-              >
-                دانلود رزومه
-              </a>
+              
             </div>
 
             <div className="flex items-center gap-5 justify-center lg:justify-start">
@@ -65,7 +58,7 @@ export default function Hero() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://t.me/yourusername"
+               href="https://t.me/mhmmdrezakaviyani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent transition-colors text-2xl"

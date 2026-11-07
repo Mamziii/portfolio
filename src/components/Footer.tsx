@@ -55,7 +55,7 @@ export default function Footer() {
               <FaTelegram />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="kiyarash17kaviyani@gmail.com"
               className="text-muted hover:text-accent transition-colors text-xl"
               aria-label="Email"
             >
