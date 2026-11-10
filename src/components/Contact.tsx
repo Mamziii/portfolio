@@ -120,7 +120,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted">لینکدین</p>
-                  <p className="text-foreground">linkedin.com/in/yourusername</p>
+                  <p className="text-foreground">linkedin.com/in/mohammadreza-kaviyani-43274b447</p>
                 </div>
               </a>
 
