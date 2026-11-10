@@ -110,7 +110,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/mohammadreza-kaviyani-43274b447"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-muted hover:text-accent transition-colors"

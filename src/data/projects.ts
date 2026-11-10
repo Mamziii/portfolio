@@ -14,7 +14,7 @@ export type Project = {
   type: "professional" | "simple";
   features?: string[];
   coverImage?: string;
-  images?: ProjectImage[]; // ← تغییر کرد
+  images?: ProjectImage[]; 
 };
 
 export const projects: Project[] = [
