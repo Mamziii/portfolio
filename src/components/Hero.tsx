@@ -35,7 +35,13 @@ export default function Hero() {
                 مشاهده پروژه‌ها
               </a>
 
-              
+              <a
+                href="/cv.pdf"
+                download
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-border bg-card hover:border-accent/50 text-foreground font-medium transition-colors"
+              >
+                دانلود رزومه
+              </a>
             </div>
 
             <div className="flex items-center gap-5 justify-center lg:justify-start">
@@ -58,7 +64,7 @@ export default function Hero() {
                 <FaLinkedin />
               </a>
               <a
-               href="https://t.me/mhmmdrezakaviyani"
+                href="https://t.me/mhmmdrezakaviyani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent transition-colors text-2xl"
@@ -67,7 +73,7 @@ export default function Hero() {
                 <FaTelegram />
               </a>
               <a
-               href="https://instagram.com/mhmmreza.kaviyani"
+                href="https://instagram.com/mhmmreza.kaviyani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent transition-colors text-2xl"
