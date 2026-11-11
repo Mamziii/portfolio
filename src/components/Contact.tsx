@@ -14,9 +14,9 @@ type FormValues = {
   message: string
 }
 
-const SERVICE_ID = 'service_adch2kc'
-const TEMPLATE_ID = 'template_zi6whgf'
-const PUBLIC_KEY = 'bmQaANkvPPoGj9RK6'
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 export default function Contact() {
   const {
