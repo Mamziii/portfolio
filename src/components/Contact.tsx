@@ -7,6 +7,7 @@ import {
   FaTelegram,
   FaInstagram,
 } from 'react-icons/fa'
+import toast from 'react-hot-toast'
 
 type FormValues = {
   name: string
@@ -33,25 +34,25 @@ export default function Contact() {
   })
 
   const onSubmit = async (data: FormValues) => {
-    try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        },
-        PUBLIC_KEY
-      )
+  try {
+    await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      },
+      PUBLIC_KEY
+    )
 
-      alert('پیام شما با موفقیت ارسال شد!')
-      reset()
-    } catch (error) {
-      console.error('EmailJS Error:', error)
-      alert('ارسال پیام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.')
-    }
+    toast.success('پیام شما با موفقیت ارسال شد!')
+    reset()
+  } catch (error) {
+    console.error('EmailJS Error:', error)
+    toast.error('ارسال پیام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.')
   }
+}
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6">
