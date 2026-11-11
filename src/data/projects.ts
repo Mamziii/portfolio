@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "Lucide React",
       "Jalali Moment",
     ],
-    github: "https://github.com/Mamziii",
+    github: "https://github.com/Mamziii/mens_shop",
     demo: "https://mens-shop-zeta.vercel.app/",
     type: "professional",
     features: [
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       "React Hot Toast",
       "Lucide React",
     ],
-    github: "https://github.com/Mamziii",
+    github: "https://github.com/Mamziii/admin-pannel",
     demo: "https://admin-pannel-rose.vercel.app/",
     type: "professional",
     features: [

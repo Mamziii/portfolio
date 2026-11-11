@@ -19,6 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.coverImage}
             alt={project.title}
             className="w-full h-full object-cover object-top"
+            loading="lazy"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -59,30 +60,31 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
+        {/* لینک‌ها */}
         <div className="flex items-center gap-5">
-          <span
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.open(project.github, "_blank");
-            }}
-            className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors cursor-pointer"
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
           >
             <FaGithub className="text-base" />
             GitHub
-          </span>
+          </a>
 
-          <span
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              if (project.demo !== "#") window.open(project.demo, "_blank");
-            }}
-            className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors cursor-pointer"
-          >
-            <FaExternalLinkAlt className="text-sm" />
-            Live Demo
-          </span>
+          {project.demo && project.demo !== "#" && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
+            >
+              <FaExternalLinkAlt className="text-sm" />
+              Live Demo
+            </a>
+          )}
         </div>
       </div>
     </Link>
