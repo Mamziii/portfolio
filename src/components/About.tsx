@@ -16,20 +16,25 @@ export default function About() {
         {/* Content */}
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-muted text-lg leading-relaxed mb-6">
-            من <span className="text-foreground font-medium">محمدرضا کاویانی</span> هستم،
-            یک Frontend Developer علاقه‌مند به ساخت رابط‌های کاربری مدرن، تمیز و کاربرپسند.
+            من{" "}
+            <span className="text-foreground font-medium">محمدرضا کاویانی</span>{" "}
+            هستم، Frontend Developer با تمرکز روی ساخت رابط‌های کاربری مدرن، سریع
+            و کاربرپسند با React و TypeScript.
           </p>
 
           <p className="text-muted text-lg leading-relaxed mb-6">
-            با React، TypeScript و Tailwind CSS کار می‌کنم و همیشه سعی می‌کنم کدهایی بنویسم که
-            هم خوانا و مقیاس‌پذیر باشن و هم تجربه خوبی برای کاربر نهایی ایجاد کنن.
+            با React، TypeScript و Tailwind CSS کار می‌کنم و همیشه سعی می‌کنم
+            کدهایی بنویسم که هم خوانا و مقیاس‌پذیر باشن و هم تجربه خوبی برای
+            کاربر نهایی ایجاد کنن.
           </p>
 
           <p className="text-muted text-lg leading-relaxed">
-            عاشق یادگیری تکنولوژی‌های جدید هستم و از تبدیل ایده‌ها به محصول واقعی لذت می‌برم.
+            عاشق یادگیری تکنولوژی‌های جدید هستم و از تبدیل ایده‌ها به محصول واقعی
+            لذت می‌برم. الان تمرکزم روی عمیق‌تر شدن در معماری فرانت‌اند و ساخت
+            پروژه‌های واقعی‌تره.
           </p>
         </div>
       </div>
     </section>
-  )
+  );
 }
