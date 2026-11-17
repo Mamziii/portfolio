@@ -14,7 +14,7 @@ export type Project = {
   type: "professional" | "simple";
   features?: string[];
   coverImage?: string;
-  images?: ProjectImage[]; 
+  images?: ProjectImage[];
 };
 
 export const projects: Project[] = [
@@ -44,12 +44,14 @@ export const projects: Project[] = [
     demo: "https://mens-shop-zeta.vercel.app/",
     type: "professional",
     features: [
-      "صفحه اصلی با نمایش محصولات",
-      "صفحه جزئیات محصول",
-      "سبد خرید و صفحه سفارش",
-      "ورود و ثبت‌نام کاربر",
-      "جستجوی محصول",
-      "طراحی ریسپانسیو (موبایل و دسکتاپ)",
+      "نمایش و دسته‌بندی مجموعه متنوعی از محصولات پوشاک مردانه",
+      "امکان انتخاب سایز و رنگ دلخواه برای هر محصول",
+      "پیاده‌سازی فیلتر محصولات و جستجوی سریع بر اساس نام محصول",
+      "نمایش جزئیات و مشخصات محصولات",
+      "پیاده‌سازی سبد خرید با قابلیت افزودن، حذف و تغییر تعداد محصولات",
+      "ذخیره و مدیریت سبد خرید بر اساس حساب کاربری",
+      "پیاده‌سازی سیستم احراز هویت شامل ثبت‌نام و ورود کاربران",
+      "طراحی رابط کاربری واکنش‌گرا (Responsive Design)",
     ],
     coverImage: "/menshop/homepage.jpeg",
     images: [
@@ -190,39 +192,33 @@ export const projects: Project[] = [
     ],
   },
   {
-  id: 5,
-  title: 'مدیریت کارها (Taskly)',
-  description:
-    'یک اپلیکیشن لیست کارها با امکان افزودن تسک و علامت‌زدن کارهای انجام‌شده، کاملاً ریسپانسیو.',
-  longDescription:
-    'Taskly یک اپلیکیشن ساده برای مدیریت کارهای روزمره است. کاربر می‌تواند تسک جدید اضافه کند و بعد از انجام، با دکمه Done آن را علامت بزند. رابط کاربری برای دسکتاپ و موبایل بهینه شده است.',
-  techs: [
-    'React',
-    'TypeScript',
-    'Vite',
-    'React Icons',
-    'SweetAlert',
-  ],
-  github: 'https://github.com/Mamziii/Taskly',
-  demo: 'https://taskly-nu-two.vercel.app/',
-  type: 'simple',
-  features: [
-    'افزودن تسک جدید',
-    'حذف تسک',
-    'اضافه نشدن تسک تکراری',
-    'علامت‌زدن کارهای انجام‌شده (Done)',
-    'رابط کاربری ساده و تمیز',
-    'طراحی ریسپانسیو (موبایل و دسکتاپ)',
-  ],
-  coverImage: '/taskly/cover.jpeg',
-  images: [
-    { src: '/taskly/cover.jpeg', title: 'صفحه اصلی (زوم شده)' },
-    { src: '/taskly/home.jpeg', title: 'صفحه اصلی (دسکتاپ)' },
-    { src: '/taskly/sametask.jpeg', title: 'اضافه نشدن تسک تکراری' },
-    { src: '/taskly/deletetask.jpeg', title: 'پاک کردن تسک' },
-    { src: '/taskly/homemobile.jpeg', title: 'صفحه اصلی (موبایل)' },
-  ],
-},
+    id: 5,
+    title: "مدیریت کارها (Taskly)",
+    description:
+      "یک اپلیکیشن لیست کارها با امکان افزودن تسک و علامت‌زدن کارهای انجام‌شده، کاملاً ریسپانسیو.",
+    longDescription:
+      "Taskly یک اپلیکیشن ساده برای مدیریت کارهای روزمره است. کاربر می‌تواند تسک جدید اضافه کند و بعد از انجام، با دکمه Done آن را علامت بزند. رابط کاربری برای دسکتاپ و موبایل بهینه شده است.",
+    techs: ["React", "TypeScript", "Vite", "React Icons", "SweetAlert"],
+    github: "https://github.com/Mamziii/Taskly",
+    demo: "https://taskly-nu-two.vercel.app/",
+    type: "simple",
+    features: [
+      "افزودن تسک جدید",
+      "حذف تسک",
+      "اضافه نشدن تسک تکراری",
+      "علامت‌زدن کارهای انجام‌شده (Done)",
+      "رابط کاربری ساده و تمیز",
+      "طراحی ریسپانسیو (موبایل و دسکتاپ)",
+    ],
+    coverImage: "/taskly/cover.jpeg",
+    images: [
+      { src: "/taskly/cover.jpeg", title: "صفحه اصلی (زوم شده)" },
+      { src: "/taskly/home.jpeg", title: "صفحه اصلی (دسکتاپ)" },
+      { src: "/taskly/sametask.jpeg", title: "اضافه نشدن تسک تکراری" },
+      { src: "/taskly/deletetask.jpeg", title: "پاک کردن تسک" },
+      { src: "/taskly/homemobile.jpeg", title: "صفحه اصلی (موبایل)" },
+    ],
+  },
 ];
 
 export function getProjectById(id: number): Project | undefined {
