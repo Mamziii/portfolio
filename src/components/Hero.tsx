@@ -8,7 +8,7 @@ export default function Hero() {
     >
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
-          {/* متن */}
+          
           <div className="flex-1 text-center lg:text-right">
             <p className="text-accent font-medium mb-4 tracking-wide">
               سلام، من
